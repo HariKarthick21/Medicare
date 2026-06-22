@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home | Medicare
+{% endblock %}
+
+{% block content %}
+<!-- Welcome Section -->
+<section class="welcome container my-5">
+    <div class="row align-items-center">
+
+        <div class="col-md-5 text-center">
+            <img src="{% static 'images/Medicare_logo.png' %}"
+                 alt="Medicare Logo"
+                 class="welcome-logo">
+        </div>
+
+        <div class="col-md-7">
+            <h1 class="mb-3">Welcome to Medicare Hospital</h1>
+            <p class="text-muted">
+                We provide world-class healthcare services with advanced technology
+                and experienced doctors. Your health is our priority.
+            </p>
+            <a href="{% url 'appointment' %}" class="welcome-btn mt-3">Book Appointment</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Banner Section -->
+<div id="hospitalCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <!-- Banner 1 -->
+    <div class="carousel-item active">
+      <div class="banner-wrapper">
+        <img src="{% static 'images/banner1.jpg' %}" class="banner-img d-block w-100" alt="banner1">
+      </div>
+      <div class="banner-overlay">
+          <i class="bi bi-heart-pulse-fill banner-icon"></i>
+          <div>
+              <h1>Quality Healthcare</h1>
+              <p>Your Health, Our Priority</p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Banner 2 -->
+    <div class="carousel-item">
+      <div class="banner-wrapper">
+        <img src="{% static 'images/banner2.jpg' %}" class="banner-img d-block w-100" alt="banner2">
+      </div>
+      <div class="banner-overlay">
+          <i class="bi bi-hospital-fill banner-icon"></i>
+          <div>
+              <h1>Expert Doctors</h1>
+              <p>Trusted Medical Professionals</p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Banner 3 -->
+    <div class="carousel-item">
+      <div class="banner-wrapper">
+        <img src="{% static 'images/banner3.jpg' %}" class="banner-img d-block w-100" alt="banner3">
+      </div>
+      <div class="banner-overlay">
+          <i class="bi bi-truck banner-icon"></i>
+          <div>
+              <h1>24/7 Emergency</h1>
+              <p>Always Ready to Help</p>
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#hospitalCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#hospitalCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+
+<!-- Emergency Section -->
+<section class="container my-5">
+    <div class="row text-center g-4">
+
+        <div class="col-md-4">
+            <div class="emergency-box">
+                <i class="bi bi-telephone-fill"></i>
+                <h5>Emergency Call</h5>
+                <p>+91 98765 43210</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="emergency-box">
+                <i class="bi bi-clock-fill"></i>
+                <h5>24/7 Service</h5>
+                <p>Available Anytime</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="emergency-box">
+                <i class="bi bi-geo-alt-fill"></i>
+                <h5>Location</h5>
+                <p>Chennai, Tamil Nadu</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Registration | Medicare
+{% endblock %}
+
+{% block content %}
+
+<!-- ✅ Messages -->
+{% if messages %}
+    {% for message in messages %}
+        <p class="alert
+            {% if message.tags == 'success' %}alert-success
+            {% elif message.tags == 'error' %}alert-danger
+            {% endif %}">
+            {{ message }}
+        </p>
+    {% endfor %}
+{% endif %}
+
+<section class="registration-header text-center">
+    <h1>Patient Registration</h1>
+    <p>Expert care across multiple medical specialties</p>
+</section>
+
+<section class="registration container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4 shadow-sm">
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <!-- 👤 Name -->
+                    <div class="mb-3">
+                        {{ form.patient_name.label_tag }}
+                        {{ form.patient_name }}
+                        {% if form.patient_name.errors %}
+                        <p class="text-danger fw-bold">{{ form.patient_name.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- 📧 Email -->
+                    <div class="mb-3">
+                        {{ form.patient_email.label_tag }}
+                        {{ form.patient_email }}
+                        {% if form.patient_email.errors %}
+                            <p class="text-danger fw-bold">{{ form.patient_email.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- 📱 Phone -->
+                    <div class="mb-3">
+                        {{ form.patient_phone.label_tag }}
+                        {{ form.patient_phone }}
+                        {% if form.patient_phone.errors %}
+                            <p class="text-danger fw-bold">{{ form.patient_phone.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- 🎂 Age -->
+                    <div class="mb-3">
+                        {{ form.patient_age.label_tag }}
+                        {{ form.patient_age }}
+                        {% if form.patient_age.errors %}
+                            <p class="text-danger fw-bold">{{ form.patient_age.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- 📝 Problem -->
+                    <div class="mb-3">
+                        {{ form.patient_problem.label_tag }}
+                        {{ form.patient_problem }}
+                        {% if form.patient_problem.errors %}
+                            <p class="text-danger fw-bold">{{ form.patient_problem.errors.0 }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn btn-success w-100 mt-3">
+                        Register Patient
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ✅ Auto hide messages -->
+<script>
+    setTimeout(() => {
+        document.querySelectorAll('.alert').forEach(el => {
+            el.style.display = 'none';
+        });
+    }, 3000);
+</script>
+
+{% endblock %}

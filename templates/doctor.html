@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Doctor | Medicare
+{% endblock %}
+
+{% block content %}
+
+<section class="doctor-header text-center">
+    <h1>Our Doctors</h1>
+    <p>Expert care across multiple medical specialties</p>
+</section>
+
+<section class="doctor container my-5">
+    {% for dept in departments %}
+        <h3 class="mb-4 text-success">{{ dept.department_name }}</h3>
+        <div class="row g-4 mb-5">
+            {% for doc in dept.doctor_set.all %}
+            <div class="col-md-4">
+                <div class="card doctor-card text-center p-3">
+                    <!-- 1️⃣ Image -->
+                    {% if doc.doctor_image %}
+                        <img src="{{ doc.doctor_image.url }}" class="doctor-img mb-3">
+                    {% else %}
+                        <div class="no-image mb-3">
+                            <i class="bi bi-person-circle"></i>
+                            <p>No Image</p>
+                        </div>
+                    {% endif %}
+                    <!-- 2️⃣ Name -->
+                    <h5 class="doctor-name">
+                        {{ doc.doctor_name|default:"No Name Available" }}
+                    </h5>
+                    <!-- 3️⃣ Specialization -->
+                    <p class="doctor-spec">
+                        {{ doc.doctor_specialization|default:"No Specialization" }}
+                    </p>
+                    <!-- 4️⃣ Department -->
+                    <p class="doctor-dept">
+                        {{ doc.department_name|default:"No Department" }}
+                    </p>
+                </div>
+            </div>
+
+            {% empty %}
+                <p class="text-muted">No doctors available in this department.</p>
+            {% endfor %}
+
+        </div>
+    {% endfor %}
+
+</section>
+
+{% endblock %}
